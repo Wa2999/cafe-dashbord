@@ -9,7 +9,6 @@ import Sidebar from "./component/Sidebar";
 import City from "./pages/City";
 import Coffeeshop from "./pages/Coffeeshop";
 import Users from "./pages/Users";
-// import firebase from "./utils/firebase";
 import CoffeeContext from "./utils/CoffeeContext";
 
 function App() {
