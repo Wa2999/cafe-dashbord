@@ -20,7 +20,9 @@ function App() {
 
   ///..................................City........................................
   const getCities = async () => {
-    const response = await axios.get("http://localhost:5000/api/cities");
+    const response = await axios.get(
+      "https://cafe-api-299.herokuapp.com/api/cities"
+    );
     setCities(response.data);
   };
   //....
@@ -33,11 +35,14 @@ function App() {
   //...
   const deleteCity = async (cityId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/cities/${cityId}`, {
-        headers: {
-          Authorization: localStorage.tokenDashboardcoffee,
-        },
-      });
+      await axios.delete(
+        `https://cafe-api-299.herokuapp.com/api/cities/${cityId}`,
+        {
+          headers: {
+            Authorization: localStorage.tokenDashboardcoffee,
+          },
+        }
+      );
       toast.success("city deleted");
       getCities();
     } catch (error) {
@@ -66,11 +71,15 @@ function App() {
         image: form.elements.image.value,
         coffeeshopes: coffeeshopes,
       };
-      await axios.post(`http://localhost:5000/api/cities`, cityBody, {
-        headers: {
-          Authorization: localStorage.tokenDashboardcoffee,
-        },
-      });
+      await axios.post(
+        `https://cafe-api-299.herokuapp.com/api/cities`,
+        cityBody,
+        {
+          headers: {
+            Authorization: localStorage.tokenDashboardcoffee,
+          },
+        }
+      );
       getCities();
       toast.success("add city success");
     } catch (error) {
@@ -95,18 +104,21 @@ function App() {
           coffeeshopes.push(form.elements.coffeeshopes.value);
         }
       }
-      
+
       const cityBody = {
         nameOfCity: form.elements.nameOfCity.value,
-        image:form.elements.image.value,
+        image: form.elements.image.value,
         coffeeshopes: coffeeshopes,
-
       };
-      await axios.put(`http://localhost:5000/api/cities/${cityId}`, cityBody, {
-        headers: {
-          Authorization: localStorage.tokenDashboardcoffee,
-        },
-      });
+      await axios.put(
+        `https://cafe-api-299.herokuapp.com/api/cities/${cityId}`,
+        cityBody,
+        {
+          headers: {
+            Authorization: localStorage.tokenDashboardcoffee,
+          },
+        }
+      );
       getCities();
       toast.success("edit success");
     } catch (error) {
@@ -117,17 +129,22 @@ function App() {
 
   //.................................coffeeshop...................................
   const getCoffees = async () => {
-    const response = await axios.get("http://localhost:5000/api/coffeeShop");
+    const response = await axios.get(
+      "https://cafe-api-299.herokuapp.com/api/coffeeShop"
+    );
     setCoffees(response.data);
   };
 
   const deleteCoffee = async (coffeeId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/coffeeShop/${coffeeId}`, {
-        headers: {
-          Authorization: localStorage.tokenDashboardcoffee,
-        },
-      });
+      await axios.delete(
+        `https://cafe-api-299.herokuapp.com/api/coffeeShop/${coffeeId}`,
+        {
+          headers: {
+            Authorization: localStorage.tokenDashboardcoffee,
+          },
+        }
+      );
       toast.success("coffeesop deleted");
       getCoffees();
     } catch (error) {
@@ -145,11 +162,15 @@ function App() {
         name: form.elements.name.value,
         image: form.elements.image.value,
       };
-      await axios.post(`http://localhost:5000/api/coffeeShop`, coffeeBody, {
-        headers: {
-          Authorization: localStorage.tokenDashboardcoffee,
-        },
-      });
+      await axios.post(
+        `https://cafe-api-299.herokuapp.com/api/coffeeShop`,
+        coffeeBody,
+        {
+          headers: {
+            Authorization: localStorage.tokenDashboardcoffee,
+          },
+        }
+      );
       getCoffees();
       toast.success("add coffeeshop success");
     } catch (error) {
@@ -168,7 +189,7 @@ function App() {
         image: form.elements.image.value,
       };
       await axios.put(
-        `http://localhost:5000/api/coffeeShop/${coffeeId}`,
+        `https://cafe-api-299.herokuapp.com/api/coffeeShop/${coffeeId}`,
         coffeeBody,
         {
           headers: {
@@ -187,11 +208,14 @@ function App() {
   //................................user........................
 
   const getUsers = async () => {
-    const response = await axios.get("http://localhost:5000/api/auth/users", {
-      headers: {
-        Authorization: localStorage.tokenDashboardcoffee,
-      },
-    });
+    const response = await axios.get(
+      "https://cafe-api-299.herokuapp.com/api/auth/users",
+      {
+        headers: {
+          Authorization: localStorage.tokenDashboardcoffee,
+        },
+      }
+    );
     setUsers(response.data);
     console.log(users);
   };
@@ -205,7 +229,7 @@ function App() {
         password: form.elements.password.value,
       };
       const response = await axios.post(
-        "http://localhost:5000/api/auth/login/admin",
+        "https://cafe-api-299.herokuapp.com/api/auth/login/admin",
         adminBody
       );
       localStorage.tokenDashboardcoffee = response.data;
@@ -233,11 +257,15 @@ function App() {
         password: form.elements.password.value,
         avatar: form.elements.avatar.value,
       };
-      await axios.post(`http://localhost:5000/api/auth/add-admin`, adminBody, {
-        headers: {
-          Authorization: localStorage.tokenDashboardcoffee,
-        },
-      });
+      await axios.post(
+        `https://cafe-api-299.herokuapp.com/api/auth/add-admin`,
+        adminBody,
+        {
+          headers: {
+            Authorization: localStorage.tokenDashboardcoffee,
+          },
+        }
+      );
       getUsers();
       toast.success("add admin success");
     } catch (error) {
@@ -248,11 +276,14 @@ function App() {
 
   const deleteUser = async (userId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/auth/users/${userId}`, {
-        headers: {
-          Authorization: localStorage.tokenDashboardcoffee,
-        },
-      });
+      await axios.delete(
+        `https://cafe-api-299.herokuapp.com/api/auth/users/${userId}`,
+        {
+          headers: {
+            Authorization: localStorage.tokenDashboardcoffee,
+          },
+        }
+      );
       toast.success("user deleted");
       getUsers();
     } catch (error) {
